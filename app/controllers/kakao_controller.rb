@@ -8,6 +8,23 @@ class KakaoController < ApplicationController
     # json형태로 렌더링
   end
   
+  def friend_add
+    User.create(user_key: params[:user_key], chat_room: 0)
+    render nothing: true
+  end
+   
+  def friend_delete
+    user = User.find_by(user_key: params[:user_key])
+    user.destroy
+    render nothing: true
+  end
+ 
+  def chat_room
+    user = User.find_by(user_key: params[:user_key])
+    user.plus
+    user.save
+    render nothing: true
+  end
   
   def message
     @text = "기본텍스트."

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   get '/keyboard' => 'kakao#keyboard'
   post '/message' => 'kakao#message'
+  
+  delete '/friend/:user_key' => 'kakao#friend_delete'
+  post '/friend' => 'kakao#friend_add'
+  delete '/chat_room/:user_key' => 'kakao#chat_room'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
